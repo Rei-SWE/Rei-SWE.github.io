@@ -12,7 +12,11 @@
   --color-blue: #03e8f9;
   --color-orange: #fd6413;
   --color-gray: #1b1e26;  
+
+  /* size */
+  --size-max-width: 750px;
 }
+
 
 *{
   box-sizing: border-box;
@@ -66,6 +70,11 @@ button:focus {
   margin:  0.5rem 0;
 }
 
+.max-container {
+  max-width: var(--size-max-width);
+  margin: auto;
+  /* block레벨에서 수평정렬을 하기 위해서는 margin: auto로 하면 중간정렬됨 */
+}
 
 /* Header */
 .header {
@@ -156,4 +165,60 @@ button:focus {
   color: var(--color-text);
   outline: 2px solid var(--color-accent);
   /* border와 outline의 차이점 공부 */
+}
+
+/* About */
+.majors {
+  display: flex ;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.major {  
+  background-color: var(--color-primary-variant);
+  padding: 2rem 1rem;
+  color: var(--color-text);
+  border-radius: 1rem;
+  cursor: default ;    
+  /* cursor: default = 마우스(커서)가 텍스트에 올라왔을때 텍스트를 클릭할 수 있는 것처럼 보이는 것으 막는기능 */
+  box-shadow: -10px -10px 30px 4px rgba(0, 0, 0, 0.1), 10px 10px 30px 4px rgba(45, 78, 255, 0.15);
+}
+
+.major_icon {
+  font-size: 4rem;
+  margin: 1rem 0;
+  color: var(--color-accent);
+  transition: all 300ms ease;
+}
+
+.major_title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.major:hover .major_icon {
+  transform: rotate(-15deg) scale(1.2);
+}
+/* major에 호버(마우스를 가져다대면) .major_icon에 {}기능 부여 */
+
+.jobs {
+  text-align: start;
+}
+
+.job {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.job_name {
+  color :var(--color-primary)
+}
+
+.job_period {
+  color: var(--color-primary);
+  font-size: 0.8rem;
 }
