@@ -331,3 +331,52 @@ button:focus {
   opacity: 1;
   top: 0;
 }
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.project {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project_img {
+  width: 100%;
+}
+
+.project_metadata{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-black);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 250ms ease-in;
+  transform: translateY(-10px);
+}
+
+.project_metadata:hover{
+  opacity: 0.8;
+}
+/* CSS 꾸미기용 가상요소
+  (HTML에 div를 넣지 않고 css만으로 가상의 var를 만들 수 있음 */
+.project_title::after {
+  content: '';
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0.5rem;
+  width: 50px;
+  height: 20px;
+  background-color: var(--color-accent);
+}
