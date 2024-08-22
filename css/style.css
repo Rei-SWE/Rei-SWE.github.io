@@ -415,4 +415,37 @@ button:focus {
   filter: brightness(70%);
 }
 
+/* Arrow up */
+.arrow-up {
+  background-color: var(--color-primary);
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  font-size: 3rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 100%;
+  text-align: center;
+  box-shadow: 5px 5px 0px 0px var(--color-accent);
+}
 
+/* Footer */
+#contact {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.contact_links {
+  display: flex;
+  justify-content: center;
+  gap:1rem;
+  font-size: 2rem;
+}
+
+.contact_link {
+  transition: color 250ms ease-in;
+}
+
+.contact_link:hover{
+  color:var(--color-accent)
+}
