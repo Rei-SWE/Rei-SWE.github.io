@@ -52,7 +52,7 @@ button {
 }
 
 button:focus {
-  outline: 1px solid var(--color-accent);
+  outline: 1px solid transparent
 }
 /* Common */
 .section {
@@ -109,6 +109,15 @@ button:focus {
   font-size: 1.8rem;
 }
 
+.header_toggle {
+  display: none;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1.3rem;
+  right:1rem;
+}
+
 .header_menu {
   display: flex;
   gap: 4px;
@@ -116,6 +125,8 @@ button:focus {
 
 .header_menu_item{
   padding: 8px 16px;
+  display: block;
+  border-bottom: 1px solid transparent
 }
 
 .header_menu_item:hover{
@@ -126,6 +137,8 @@ button:focus {
   border: 1px solid var(--color-accent);
   border-radius: 4px;
 }
+
+/* 토글 버튼 만들기 */
 
 /* Home */
 #home {
@@ -460,7 +473,7 @@ button:focus {
 
 @media screen and (max-width: 768px){
   .section {
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
   }
 
   .title {
@@ -523,14 +536,25 @@ button:focus {
   .header {
     flex-direction: column;
     align-items: start;
+    background-color: var(--color-primary);
+  }
+
+  .header_toggle {
+    display: block;
   }
   .header_menu{
+    display: none;
     flex-direction: column;
     text-align: center;
-    padding: 1rem 4rem;
+    margin: 1rem 4rem;
     gap: 1rem;
+  }
+/*헤더 메뉴에 오픈이 같이 있다면*/
+  .header_menu.opne {
+    display: flex;
   }
   .header_nav {
     width: 100%;
   }
+  
 }

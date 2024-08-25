@@ -32,8 +32,16 @@ document.addEventListener('scroll', () => {
 
 
 
-  // if(window.scrollY > homeHeight / 2) {
-  //   arrowUp.style.opacity = 1
-  // } else {
-  //   arrowUp.style.opacity = 0
-  // }
+// // 미니어 쿼시시 토글 버튼 만들기
+
+const navbarMenu = document.querySelector('.header_menu')
+const navbarToggle = document.querySelector('.header_toggle')
+navbarToggle.addEventListener('click', ()=> {
+  navbarMenu.classList.toggle('opne');
+})
+
+
+// Navbar 메뉴 클릭시 메뉴를 자동으로 닫아줌
+navbarMenu.addEventListener('click', ()=> {
+  navbarMenu.classList.remove('opne');
+})
