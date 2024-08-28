@@ -256,6 +256,10 @@ button:focus {
   font-size: 0.8rem;
 }
 
+.job_photo {
+  width: 140px;
+  height: 20px;
+}
 /* Skills */
 #skills {
   background-color: var(--color-primary-variant);
