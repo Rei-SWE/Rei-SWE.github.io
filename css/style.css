@@ -129,6 +129,12 @@ button:focus {
   border-bottom: 1px solid transparent
 }
 
+/* .header_menu_item{
+  padding: 8px 16px;
+  display: block;
+  border-bottom: 1px solid transparent
+} */
+
 .header_menu_item:hover{
   border-bottom: 1px solid var(--color-accent);
 }
@@ -138,6 +144,10 @@ button:focus {
   border-radius: 4px;
 }
 
+.active {
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+}
 /* 토글 버튼 만들기 */
 
 /* Home */
@@ -355,8 +365,14 @@ button:focus {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  transition: all 250ms ease-out;
 }
+.project.anim-out {
+  opacity: 0;
+  transform: scale(0.96) translateY(20px);
 
+}
 .project {
   position: relative;
   border-radius: 8px;
@@ -550,7 +566,7 @@ button:focus {
     gap: 1rem;
   }
 /*헤더 메뉴에 오픈이 같이 있다면*/
-  .header_menu.opne {
+  .header_menu.open {
     display: flex;
   }
   .header_nav {
