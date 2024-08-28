@@ -97,11 +97,12 @@ function filterProjects (filter) {
 const setionIds = ['#home', '#about', '#skills', '#work', '#testimonial', '#contact',];
 const sections = setionIds.map((id) => document.querySelector(id))
 const navItems = setionIds.map((id) => document.querySelector(`[href="${id}"]`))
-console.log(sections)
-console.log(navItems)
 const visibleSections = setionIds.map(() => false )
-
-const options = {}
+let activeNavItem = navItems[0]
+const options = {
+  rootMaign: '-25% 0px 0px 0px',
+  threshold: [0, 0.98],
+}
 const observer = new IntersectionObserver(observerCallback, options);
 sections.forEach((section) => observer.observe(section));
 
@@ -111,20 +112,27 @@ function observerCallback(entries) {
     visibleSections[index] = entry.isIntersecting;
     selectLastOne = 
         index === setionIds.length - 1 && 
-        entry.isIntersecting && 
-        entry.intersectionRatio >= 0.99;
+        entry.isIntersecting &&   
+        entry.intersectionRatio >= 0.95;
   }); 
-  console.log(visibleSections)
-  console.log('무조건 라스트 섹션!!', selectLastOne)
 
   const navIndex = selectLastOne 
     ? setionIds.length - 1 
     : findFirstIntersecting(visibleSections)
     console.log(setionIds[navIndex])
+  selectNavItem(navIndex);
 }
 
 
 function findFirstIntersecting(intersections) {
   const index = intersections.indexOf(true)
   return index >= 0 ? index : 0
+}
+
+function selectNavItem(index) {
+    const navItem = navItems[index];
+    if(!navItem) return;
+    activeNavItem.classList.remove('active')
+    activeNavItem = navItem
+    activeNavItem.classList.add('active')
 }
