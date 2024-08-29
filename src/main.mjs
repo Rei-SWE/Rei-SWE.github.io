@@ -101,7 +101,7 @@ const visibleSections = sectionsId.map(() => false )
 let activeNavItem = navItems[0]
 const options = {
   rootMargin: '-20% 0px 0px 0px',
-  threshold: [0, 1],
+  threshold: [0, 0.99],
 }
 const observer = new IntersectionObserver(observerCallback, options);
 sections.forEach((section) => observer.observe(section));
@@ -114,7 +114,7 @@ function observerCallback(entries) {
     selectLastOne = 
         index === sectionsId.length - 1 && 
         entry.isIntersecting &&   
-        entry.intersectionRatio >= 0.99;
+        entry.intersectionRatio >= 0.98;
   }); 
 
   console.log(visibleSections)
