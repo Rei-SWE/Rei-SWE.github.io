@@ -94,38 +94,41 @@ function filterProjects (filter) {
 // 보여지는 섹션: 디수의섹션이 동시에 보여진다면, 가장 첫번째 색션을 우선
 // 마지막 contact 섹션이 보여진다면, 그러면 가장 마지막 섹션을 선택
 
-const setionIds = ['#home', '#about', '#skills', '#work', '#testimonial', '#contact',];
-const sections = setionIds.map((id) => document.querySelector(id))
-const navItems = setionIds.map((id) => document.querySelector(`[href="${id}"]`))
-const visibleSections = setionIds.map(() => false )
+const sectionsId = ['#home', '#about', '#skills', '#work', '#testimonial', '#contact',];
+const sections = sectionsId.map((id) => document.querySelector(id))
+const navItems = sectionsId.map((id) => document.querySelector(`[href="${id}"]`))
+const visibleSections = sectionsId.map(() => false )
 let activeNavItem = navItems[0]
 const options = {
-  rootMaign: '-25% 0px 0px 0px',
-  threshold: [0, 0.98],
+  rootMargin: '-20% 0px 0px 0px',
+  threshold: [0, 1],
 }
 const observer = new IntersectionObserver(observerCallback, options);
 sections.forEach((section) => observer.observe(section));
 
 function observerCallback(entries) {
+  let selectLastOne;
   entries.forEach((entry) => {
-    const index = setionIds.indexOf(`#${entry.target.id}`);
+    const index = sectionsId.indexOf(`#${entry.target.id}`);
     visibleSections[index] = entry.isIntersecting;
     selectLastOne = 
-        index === setionIds.length - 1 && 
+        index === sectionsId.length - 1 && 
         entry.isIntersecting &&   
-        entry.intersectionRatio >= 0.95;
+        entry.intersectionRatio >= 0.99;
   }); 
 
-  const navIndex = selectLastOne 
-    ? setionIds.length - 1 
-    : findFirstIntersecting(visibleSections)
-    console.log(setionIds[navIndex])
+  console.log(visibleSections)
+  console.log('무조건 라스트 섹션')
+
+  const navIndex = selectLastOne ? sectionsId.length - 1 : findFirstIntersecting(visibleSections);
+
   selectNavItem(navIndex);
 }
 
 
+
 function findFirstIntersecting(intersections) {
-  const index = intersections.indexOf(true)
+  const index = intersections.indexOf(true);
   return index >= 0 ? index : 0
 }
 
@@ -133,6 +136,20 @@ function selectNavItem(index) {
     const navItem = navItems[index];
     if(!navItem) return;
     activeNavItem.classList.remove('active')
-    activeNavItem = navItem
+    activeNavItem = navItem;
     activeNavItem.classList.add('active')
+    
 }
+
+
+// TypeIt
+new TypeIt('.home_title--strong', {
+  loop: true,
+  speed: 120,
+}) // 
+.pause(1200)
+.delete()
+.type('Full-stack Engieer')
+.pause(1200)
+.delete()
+.go();
